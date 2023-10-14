@@ -9,7 +9,7 @@ pipeline {
                 script {
                     checkout scm
                     sh 'rm -rf *.war'
-                    sh 'jar -cvf pages.war -C 645-hw2-survey/ .'
+                    sh 'jar -cvf pages.war -C /var/lib/jenkins/workspace/645-hw2-docker/ .'
                     sh 'echo ${BUILD_TIMESTAMP}'
                     sh "docker login -u 645docker -p ${DOCKERHUB_PASS}"
                     def customImage = docker.build("645docker/645-hw2:${BUILD_TIMESTAMP}")
