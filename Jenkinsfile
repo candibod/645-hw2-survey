@@ -1,7 +1,7 @@
 pipeline {
     agent any
     environment {
-        DOCKERHUB_PASS = credentials('docker-pass')
+        DOCKER_PASS = credentials('docker-pass')
     }
     stages {
         stage("Building the Student Survey Image") {
@@ -11,7 +11,7 @@ pipeline {
                     sh 'rm -rf *.war'
                     sh 'jar -cvf pages.war -C /var/lib/jenkins/workspace/645-hw2-docker/ .'
                     sh 'echo ${BUILD_TIMESTAMP}'
-                    sh "sudo docker login -u 645docker -p $DOCKERHUB_PASS"
+                    sh "sudo docker login -u 645docker -p $DOCKER_PASS"
                     def customImage = docker.build("645docker/645-hw2:${BUILD_TIMESTAMP}")
                 }
             }
