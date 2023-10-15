@@ -13,7 +13,7 @@ pipeline {
             steps {
                 script {
                     sh 'rm -rf *.war'
-                    sh 'jar -cvf pages.war -C /var/lib/jenkins/workspace/645-hw2-deploy .'
+                    sh 'jar -cvf pages.war -C /var/lib/jenkins/workspace/645-hw2-docker .'
                     sh 'echo ${BUILD_TIMESTAMP}'
                 }
             }
