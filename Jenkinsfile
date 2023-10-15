@@ -13,6 +13,7 @@ pipeline {
                     sh 'echo ${BUILD_TIMESTAMP}'
                     sh 'echo "Success" ' 
                     def customImage = docker.build("645docker/645-hw2:${BUILD_TIMESTAMP}")
+                    sh 'echo "docker build Success" '
                 }
             }
         }
