@@ -11,6 +11,7 @@ pipeline {
                     sh 'rm -rf *.war'
                     sh 'jar -cvf pages.war -C /var/lib/jenkins/workspace/645-hw2-docker/ .'
                     sh 'echo ${BUILD_TIMESTAMP}'
+                    sh "sudo docker login -u 645docker -p $DOCKER_PASS"
                     sh 'echo "Success" ' 
                     def customImage = docker.build("645docker/645-hw2:${BUILD_TIMESTAMP}")
                     sh 'echo "docker build Success" '
